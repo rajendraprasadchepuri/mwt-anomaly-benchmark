@@ -1,0 +1,30 @@
+dataset:
+  num_days: 14
+  sample_rate_sec: 1
+  random_seed: 42
+  output_dir: "data"
+  csv_filename: "mwt_pump_telemetry_benchmark.csv"
+  parquet_filename: "mwt_pump_telemetry_benchmark.parquet"
+
+features:
+  numerical_cols:
+    - "vibration_x"
+    - "vibration_y"
+    - "vibration_z"
+    - "press_suction"
+    - "press_disch"
+    - "flow_rate"
+    - "temp_bearing"
+    - "temp_stator"
+    - "current_L1"
+    - "vfd_frequency"
+  target_col: "is_anomaly"
+  multiclass_target_col: "fault_type"
+
+training:
+  train_split: 0.70
+  val_split: 0.15
+  test_split: 0.15
+  batch_size: 256
+  learning_rate: 0.001
+  epochs: 15
